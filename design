@@ -1,0 +1,225 @@
+------------------------------------------------------------------------------------
+
+
+                            User --- Booking --- Seat
+                                        |       /
+                                        |     /
+                                        |   /
+                                       Show --- Theater --- Movie
+
+
+---------------------------------------------------------------------------------------
+                                    ARCHITECTURE
+MODEL:      //database creation
+User
+Movie
+Show
+Booking
+Seat
+Theater
+
+
+
+
+Controller:     //handling restfull web apis
+UserController
+MovieController
+ShowController
+BookingController
+SeatController
+TheaterController
+
+
+
+
+Services:    //controller and database connector
+UserService
+MovieService
+ShowService
+BookingService
+SeatService
+TheaterService
+
+
+
+
+Repository:     //Database access/modify
+UserRepository
+MovieRepository
+ShowRepository
+BookingRepository
+SeatRepository
+TheaterRepository
+
+
+
+----------------------------------------------------------------------------------------
+                                  MODEL ATTRIBUTES
+USER:
+username
+firstName
+lastName
+password
+isAdmin/isCustomer
+customer's list of bookings
+
+
+Movie:
+movieId
+movieTitle
+movieYear
+movieGenre
+movieLanguage
+movieDuration
+
+
+Theater:
+theaterId
+theaterName
+list of shows
+
+
+Seat:
+seatNumber
+
+
+Show:
+showId
+theaterId
+movieId
+list of bookings
+
+
+Booking:
+bookingId
+username
+showId
+seatNumber
+
+
+---------------------------------------------------------------------------------------------
+                                   Controller Methods & Services
+
+
+               Controller layer: input validation// 1.NotNull 2.CorrectLength 3.Formatting
+               Service Layer: 1.Validating input using database 2.Handle Exception
+               Repository: return database query
+
+
+UserController:
+getUser
+getAllUser
+registerUser        // request body as username,password all user details
+LoginUser           // request body as username,password
+getBookings
+
+
+MovieController:
+getMovieById
+getMovieByTitle
+getMovieByYear
+getMovieByGenre
+getMovieByLanguage
+getMovies
+addMovie
+deleteMovie
+modifyMovie
+
+
+TheaterController:
+getTheaterById
+getTheaterByName
+getAllTheaters
+getAllShows
+addTheater
+deleterTheater
+modifyTheaterByName
+addTheaterShow
+deleteTheaterShow
+
+
+SeatController:
+getSeat
+
+
+
+ShowController:
+getShowById
+getAllShows
+getBookings
+addShow
+deleteShow
+modifyShow
+addShowBooking
+deleteShowBooking
+
+
+
+BookingController:
+getBookingById
+createBooking
+modifyBookingSeatNumber
+deleteBooking
+
+
+
+----------------------------------------------------------------------------------------------------
+                                   Database Repository
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+            Last Work:
+ALL Exceptions done
+User Controller, DTO and validation done
+Movie Controller, DTO and validation done
+Theater Controller, DTO and validation done
+Seat Controller, DTO and validation done
+Show Controller, DTO and validation done
+Booking Controller, DTO and validation done
+
+users api done
+movies api done
+theater api done
+seat api done
+show apis
+booking apis
+
+used @JsonIgnore for not exposing details
+used @JsonIgnoreProperties for infinite recursion
+used mapping
+
+
+Repository
+User
+Theater
+Show
+Seat
+Movie
+Booking
+
+
+Concurrency done
+everything working fine
+
+
+Mysql connected successfully to the project
+
+
+
+added jwt
+secured using admin or user role apis
+
+
+user security implemented
+
+            Currently Working ON:
+Security
+theater security
